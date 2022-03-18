@@ -2150,4 +2150,11 @@ $CONFIG = [
  * the database storage.
  */
 'enable_file_metadata' => true,
+
+/**
+ * Allows to override the default scopes for Account data.
+ * The list of overridable properties and valid values for scopes are in
+ * OCP\Accounts\IAccountManager. Default values are in OC\Accounts\AccountManager
+ */
+'account_manager.default_property_scope' => []
 ];
