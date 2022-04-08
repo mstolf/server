@@ -1153,11 +1153,6 @@
       <code>$this-&gt;fileIsEncrypted</code>
     </TypeDoesNotContainType>
   </file>
-  <file src="apps/files/lib/App.php">
-    <InvalidScalarArgument occurrences="1">
-      <code>10 * 1024 * 1024</code>
-    </InvalidScalarArgument>
-  </file>
   <file src="apps/files/lib/Command/Scan.php">
     <NullArgument occurrences="1">
       <code>null</code>
