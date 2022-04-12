@@ -26,9 +26,7 @@ use OC\SystemConfig;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionContext;
 
 abstract class Base extends \OC\Core\Command\Base {
-
-	/** @var SystemConfig */
-	protected $systemConfig;
+	protected SystemConfig $systemConfig;
 
 	/**
 	 * @param string $argumentName
