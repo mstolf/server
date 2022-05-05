@@ -32,18 +32,15 @@ use OCP\AppFramework\Utility\ITimeFactory;
 use OCP\BackgroundJob\IJob;
 use OCP\BackgroundJob\IJobList;
 use OCP\BackgroundJob\TimedJob;
+use OCP\Files\Node;
 use OCP\Files\File;
 use OCP\Files\Folder;
 use OCP\Files\IRootFolder;
 use OCP\Files\NotFoundException;
 
 class UploadCleanup extends TimedJob {
-
-	/** @var IRootFolder */
-	private $rootFolder;
-
-	/** @var IJobList */
-	private $jobList;
+	private IRootFolder $rootFolder;
+	private IJobList $jobList;
 
 	public function __construct(ITimeFactory $time, IRootFolder $rootFolder, IJobList $jobList) {
 		parent::__construct($time);
@@ -79,7 +76,8 @@ class UploadCleanup extends TimedJob {
 		// The folder has to be more than a day old
 		$initial = $uploadFolder->getMTime() < $time;
 
-		$expire = array_reduce($files, function (bool $carry, File $file) use ($time) {
+		$expire = array_reduce($files, function (bool $carry, Node $file) use ($time) {
+			/** File $file */
 			return $carry && $file->getMTime() < $time;
 		}, $initial);
 
